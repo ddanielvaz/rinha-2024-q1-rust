@@ -32,10 +32,7 @@ pub async fn add_client_transaction(
         "#;
         // println!("[INFO] DBPOOL {:?}", db.lock().await.status());
         let mut db_client = db.lock().await.get().await.unwrap();
-        // let mut db_client = db.lock().await;
         let db_transaction = db_client.transaction().await.unwrap();
-        // let mut db_transaction = db_client.conn.transaction().await.unwrap();
-        // let stmt_q = db_transaction.prepare_cached(q).await.unwrap();
         let account = db_transaction.query_one(select_for_update, &[&client_id]).await.unwrap();
         let limit_amount: i32 = account.get("limit_amount");
         let mut balance: i32 = account.get("balance");
@@ -74,7 +71,6 @@ pub async fn add_client_transaction(
             SET balance = balance + $2
             WHERE accounts.id = $1
         "#;
-        // let stmt_update_account = db_transaction.prepare_cached(update_account).await.unwrap();
         if new_transaction.tipo == "d" {
             db_transaction
                 .execute(update_account, &[&client_id, &-new_transaction.valor])
@@ -122,11 +118,8 @@ pub async fn get_client_balance(client_id: i32, db: DBConnection) -> Result<impl
             FROM accounts
             WHERE accounts.id = $1
         "#;
-        // let mut db_client = db.lock().await;
         let mut db_client = db.lock().await.get().await.unwrap();
         let db_transaction = db_client.transaction().await.unwrap();
-        //let mut db_transaction = db_client.conn.transaction().await.unwrap();
-        // let stmt = db_transaction.prepare_cached(account_query).await.unwrap();
         let account = db_transaction
             .query_one(account_query, &[&client_id])
             .await
