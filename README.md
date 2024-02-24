@@ -35,4 +35,4 @@ Toda parte de infra eu reutilizei do repositório [quokka](https://github.com/le
 - Dockerfile
 - Makefile
 
-Obrigado [@leandronsp](https://github.com/leandronsp), aprendi muito lendo, reusando e modificando essa parte de infra. Uma menção também especial ao statement SELECT ... FOR UPDATE.
+Obrigado [@leandronsp](https://github.com/leandronsp), aprendi muito lendo, reusando e modificando essa parte de infra. Uma menção especial ao statement SELECT ... FOR UPDATE.
