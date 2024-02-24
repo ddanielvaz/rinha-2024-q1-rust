@@ -1,13 +1,10 @@
-use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct BankTransaction {
-    pub fk_client: Option<i32>,
     pub valor: i32,
     pub tipo: String,
     pub descricao: String,
-    pub created_at: Option<DateTime<Utc>>,
 }
 
 impl BankTransaction {

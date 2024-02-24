@@ -1,4 +1,3 @@
-// use std::collections::VecDeque;
 use std::{convert::Infallible, sync::Arc};
 use tokio::sync::Mutex;
 use deadpool_postgres::Pool;
@@ -17,7 +16,6 @@ async fn main() {
     let root = warp::path::end().map(|| "Welcome to my warp server!");
     let db: DBConnection = Arc::new(Mutex::new(db::new_pool().unwrap()));
 
-    // GET /hello/warp => 200 OK with body "Hello, warp!"
     let extrato = warp::path!("clientes" / i32 / "extrato")
         .and(warp::get())
         .and(with_db(Arc::clone(&db)))
@@ -47,6 +45,5 @@ async fn main() {
 fn with_db(
     database: DBConnection,
 ) -> impl Filter<Extract = (DBConnection,), Error = Infallible> + Clone {
-    // warp::any().map(move || database.clone())
     warp::any().map(move || Arc::clone(&database))
 }
