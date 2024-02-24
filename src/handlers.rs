@@ -53,7 +53,6 @@ pub async fn add_client_transaction(
             INSERT INTO transactions (account_id, amount, transaction_type, description)
             VALUES ($1, $2, $3, $4)
             "#;
-        // let stmt_insert = db_transaction.prepare_cached(insert).await.unwrap();
         let _ = db_transaction
             .execute(
                 insert,
