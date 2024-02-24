@@ -1,6 +1,8 @@
 # rinha-2024-q1-rust
 Rinha de Backend - 2024 - Q1 - Implementação em rust + tokio + warp + deadpool-postgres
 
+![image](https://github.com/ddanielvaz/rinha-2024-q1-rust/assets/4839159/f82726ac-e2b7-49d4-85f0-eb50b2f21886)
+
 # Stack
 - rust
 - [warp](https://github.com/seanmonstar/warp)
